@@ -13,7 +13,7 @@ import cat1 from './assets/cat3.jpg'
 // import usericon from './assets/user-icon.png'
 import cat2 from './assets/cat5.jpg'
 import opener from './assets/opener2.svg'
-import close from './assets/opener1.svg'
+import close from './assets/close2.svg'
 
 import { runChat } from './Openai.js'
 
@@ -23,7 +23,7 @@ function App() {
       const [input,setInput] = useState("");
       const [isLoading,setloading]=useState(false);
       const [history,setHistory]=useState([]);
-      const [side,setSide]=useState(false);
+      const [side,setSide]=useState(true);
       let his=[...history].reverse()
       const [messages,setMessages]=useState([{
               text:"Hi, I am GPT, a state-of-the-art language model developed by Lokesh",
