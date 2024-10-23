@@ -24,61 +24,61 @@ function App() {
       const [isLoading,setloading]=useState(false);
       const [history,setHistory]=useState([]);
       const [side,setSide]=useState(true);
+      const [error,setError]=useState(false);
       let his=[...history].reverse()
       const [messages,setMessages]=useState([{
               text:"Hi, I am GPT, a state-of-the-art language model developed by Lokesh",
               isBot:true
             }]);
 
-      const handleSend=async()=>{
-        setMessages(m=>[...m,
-          {text:input,isBot:false}
-          ])
+      
+
+      const handleSend = async () => {
+        try {
+          setError(false); // Reset error 
+          setMessages(m => [...m, { text: input, isBot: false }]);
           setloading(true);
           setInput("");
-          const res=await runChat(input,history);
+          
+          const res = await runChat(input, history);
           console.log(res);
-
-          setHistory(h=>[
-            ...h,{
-              role:"user",
-              parts:[
-                {text:input},
-              ],
-            },
-            {
-              role:"model",
-              parts:[
-                {text:res}
-              ],
-            },
-          ])
-
-          
-
-          console.log(history);
-          let resarr=res.split('**')
-          let newres="";
-          for(let i=0; i<resarr.length;i++){
-              if(i===0 || i%2!==1){
-                newres+=resarr[i];
-                }
-              else{
-                newres+="<b>"+resarr[i]+"</b>";
-              }
+      
+          setHistory(h => [...h, {
+            role: "user",
+            parts: [{ text: input }],
+          }, {
+            role: "model",
+            parts: [{ text: res }],
+          }]);
+      
+          // console.log(history);
+          let resarr = res.split('**');
+          let newres = "";
+          for (let i = 0; i < resarr.length; i++) {
+            if (i === 0 || i % 2 !== 1) {
+              newres += resarr[i];
+            } else {
+              newres += "<b>" + resarr[i] + "</b>";
+            }
           }
-          let finalres=newres.split('*').join("</br>");
-          setMessages(m=>[...m,
-            {text:finalres,isBot:true}
-            ])
-
-          
-
+          let finalres = newres.split('*').join("</br>");
+          setMessages(m => [...m, { text: finalres, isBot: true }]);
+      
           setloading(false);
-          }
+        } catch (error) {
+          console.error('Error in handleSend:', error);
+          setError(true);
+          setloading(false);
+        }
+      }
+      
+
+
+
           useEffect(()=>{
             msgEnd.current.scrollIntoView();
             },[messages])
+
         
           const handleEnter = async (e) => {
             if (e.key =='Enter') {
@@ -132,6 +132,9 @@ function App() {
                     <hr />
                     <hr />
                   </div> )}
+                  {error && (<div className='Error'>⚠️The model is overloaded plz try again*
+                  </div> )}
+
                   <div ref={msgEnd}></div>
             </div>
 
@@ -139,7 +142,8 @@ function App() {
                 <div className="inp">
                   <input type="text" value={input} onKeyDown={handleEnter} onChange={(e)=>setInput(e.target.value)} placeholder='Send a message'/> <button className="send" onClick={handleSend}><img src={sendbtn} alt="" /></button> 
                 </div>
-                <p>Chat GPT may produce inaccurate information about people, places, or facts. ChatGPT August 20 Version.</p>
+                <p>If you find any difficulties feel free to contact 'lokeshvlw2004@gmail.com'</p>
+
             </div>
         </div>
       </div> 
