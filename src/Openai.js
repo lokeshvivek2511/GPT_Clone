@@ -19,7 +19,20 @@ import {GoogleGenerativeAI} from "@google/generative-ai";
   export async function runChat(prompt,his) {
     const chatSession = model.startChat({
       generationConfig,
-      history: [...his
+      history: [
+        {
+          "role": "user",
+          "parts": [
+            "I'm going to give you some informations about me please do remember those things.\nYour developer name is Lokeshwaran and his girlfriend's name is Rojasri, father's name is Vivekanandan and mother's name is Saraswathi.\nHe is pursuing his bachelor's degree in CSE at NGPITECH.His friends are(Roja,Ami,pavi,kiruthi,keerthana,akshaya,harshini,gokul,adharsh,mithilesh,arivu,banu,lavanya,arsath,marcian,sri nithya,rishi,san,abi,karthikeyan,gayathri,karthik,raja).\nHis brothers are(Praveen Kumar (Chartered accountant),kirubakaran(Logistics),mahendran(Conductor-govt).\nHis skills are(Development:MERN, html, css, javascript, react, flask),(Problem solving:C,C++, python, java),(DB:Sql in ssms,MongoDb)\nIn his recent projects,he completely cloned chatGPT using react.",
+          ],
+        },
+        {
+          "role": "model",
+          "parts": [
+            "Okay, I have stored all the information you provided about Lokeshwaran. I will remember:\n\n",
+          ],
+        },
+        ...his,
       ],
     });
   
