@@ -62,6 +62,8 @@ function App() {
             }
           }
           let finalres = newres.split('*').join("</br>");
+          let finalres1 = finalres.split('\n').join("</br>");
+          finalres = finalres1.split('</br></br>').join("</br>");
           setMessages(m => [...m, { text: finalres, isBot: true }]);
       
           setloading(false);
@@ -96,7 +98,7 @@ function App() {
               <div className="uppersidebottom">
 
                 {his.map((ele,i)=>
-                    (<button key={i} className={ele.role=="user"?"query":"none"} value={ele.parts[0].text} onClick={(e)=>{setInput(i=>i=e.target.value);}}><img src={msgicon} alt="" /> {ele.parts[0].text}</button>) 
+                    (<button  key={i} className={ele.role=="user"?"query":"none"} value={ele.parts[0].text} onClick={(e)=>{setInput(i=>i=e.target.value);setSide(s=>s=!s) }} ><img src={msgicon} alt="" /> {ele.parts[0].text}</button>) 
       
                 )}
                 <button className="query" value="What is react?" onClick={(e)=>{setInput(i=>i=e.target.value);}}><img src={msgicon} alt="" /> What is react?</button>

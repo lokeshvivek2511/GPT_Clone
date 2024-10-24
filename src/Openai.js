@@ -1,8 +1,8 @@
 
 import {GoogleGenerativeAI} from "@google/generative-ai";
   
-  // const apiKey = "AIzaSyDtYPc1UfnrwpkDKrKGsDMO6uvtJTslfhg";
-  const apiKey = "AIzaSyAg5No0WKjRM2kXZ3Uzpb3fmsM5XZqV0hg";
+  const apiKey = "AIzaSyDtYPc1UfnrwpkDKrKGsDMO6uvtJTslfhg";
+  // const apiKey = "AIzaSyAg5No0WKjRM2kXZ3Uzpb3fmsM5XZqV0hg";
   const genAI = new GoogleGenerativeAI(apiKey);
   
   const model = genAI.getGenerativeModel({
@@ -11,8 +11,8 @@ import {GoogleGenerativeAI} from "@google/generative-ai";
   
   const generationConfig = {
     temperature: 0.9,
-    topP: 0.95,
-    topK: 1,
+    topP: 0.95, 
+    topK: 10,
     maxOutputTokens: 2048
   };
   
