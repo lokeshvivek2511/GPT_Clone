@@ -19,13 +19,14 @@ import { runChat } from './Openai.js'
 
 function App() {
       const msgEnd=useRef(null);
-      const api1="AIzaSyDtYPc1UfnrwpkDKrKGsDMO6uvtJTslfhg";
-      const api2="AIzaSyAg5No0WKjRM2kXZ3Uzpb3fmsM5XZqV0hg";
-      const [api,setApi]=useState(api1)
+      const api=["AIzaSyDyc0TCFalqKDLY1NvxIebQwsPexLg9u-I","AIzaSyCEnXyzlyrccDvSIMFlJfckwbhs3WeItn0","AIzaSyCoJ5sAS1UDUc2mvIAwCyh_BEkbM13DN88","AIzaSyCkMcZhf44IVBD9HCPw5djybFIYALxQHBg"];
+      // const api2="AIzaSyAg5No0WKjRM2kXZ3Uzpb3fmsM5XZqV0hg";
+      const [apik,setApi]=useState("AIzaSyDyc0TCFalqKDLY1NvxIebQwsPexLg9u-I")
+      const [index,setIndex]=useState(0)
       const [input,setInput] = useState("");
       const [isLoading,setloading]=useState(false);
       const [history,setHistory]=useState([]);
-      const [side,setSide]=useState(true);
+      const [side,setSide]=useState(true);  
       const [error,setError]=useState(false);
       let his=[...history].reverse()
       const [messages,setMessages]=useState([{
@@ -35,14 +36,17 @@ function App() {
 
       
 
+      
+
       const handleSend = async () => {
         try {
+          // console.log(index);
           setError(false); // Reset error 
           setMessages(m => [...m, { text: input, isBot: false }]);
           setloading(true);
           setInput("");
           
-          const res = await runChat(input, history,api);
+          const res = await runChat(input, history,apik);
           // console.log(res);
       
           setHistory(h => [...h, {
@@ -73,8 +77,12 @@ function App() {
           console.error('Error in handleSend:', error);
           setError(true);
           setloading(false);
-          setApi(a=>a=(a==api1)?api2:api1);
-          handleSend()
+          setIndex((i)=>(i+1)%4)
+          setApi(api[index]);
+          // const arr=[...messages];
+          // arr.pop();
+          // setMessages(arr);
+          // handleSend()
         }
       }
       
