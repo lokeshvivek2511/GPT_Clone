@@ -19,7 +19,9 @@ import { runChat } from './Openai.js'
 
 function App() {
       const msgEnd=useRef(null);
-
+      const api1="AIzaSyDtYPc1UfnrwpkDKrKGsDMO6uvtJTslfhg";
+      const api2="AIzaSyAg5No0WKjRM2kXZ3Uzpb3fmsM5XZqV0hg";
+      const [api,setApi]=useState(api1)
       const [input,setInput] = useState("");
       const [isLoading,setloading]=useState(false);
       const [history,setHistory]=useState([]);
@@ -40,8 +42,8 @@ function App() {
           setloading(true);
           setInput("");
           
-          const res = await runChat(input, history);
-          console.log(res);
+          const res = await runChat(input, history,api);
+          // console.log(res);
       
           setHistory(h => [...h, {
             role: "user",
@@ -71,6 +73,8 @@ function App() {
           console.error('Error in handleSend:', error);
           setError(true);
           setloading(false);
+          setApi(a=>a=(a==api1)?api2:api1);
+          handleSend()
         }
       }
       

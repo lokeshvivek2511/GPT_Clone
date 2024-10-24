@@ -1,22 +1,27 @@
 
 import {GoogleGenerativeAI} from "@google/generative-ai";
   
-  const apiKey = "AIzaSyDtYPc1UfnrwpkDKrKGsDMO6uvtJTslfhg";
+  // const apiKey = "AIzaSyDtYPc1UfnrwpkDKrKGsDMO6uvtJTslfhg";
   // const apiKey = "AIzaSyAg5No0WKjRM2kXZ3Uzpb3fmsM5XZqV0hg";
-  const genAI = new GoogleGenerativeAI(apiKey);
+ 
   
-  const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-pro-002",
-  });
+  export async function runChat(prompt,his,apiKey) {
+
+    const genAI = new GoogleGenerativeAI(apiKey);
   
-  const generationConfig = {
-    temperature: 0.9,
-    topP: 0.95, 
-    topK: 10,
-    maxOutputTokens: 2048
-  };
-  
-  export async function runChat(prompt,his) {
+    const model = genAI.getGenerativeModel({
+      model: "gemini-1.5-pro-002",
+    });
+    
+    const generationConfig = {
+      temperature: 0.9,
+      topP: 0.95, 
+      topK: 10,
+      maxOutputTokens: 2048
+    };
+
+
+
     const chatSession = model.startChat({
       generationConfig,
       history: [
@@ -37,7 +42,7 @@ import {GoogleGenerativeAI} from "@google/generative-ai";
     });
   
     const result = await chatSession.sendMessage(prompt);
-    console.log(result.response.text());
+    // console.log(result.response.text());
     return(result.response.text())
   }
 
