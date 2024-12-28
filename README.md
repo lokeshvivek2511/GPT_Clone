@@ -1,112 +1,122 @@
-**Chat GPT Clone**
+# ChatGPT Clone
 
-This project is a Chat GPT clone built using React and Vite, with integration for OpenAI and Google Generative AI APIs. It features a chat interface where users can interact with an AI model, save chat history, and explore various functionalities within an intuitive and responsive UI.
+This repository contains a ChatGPT Clone, developed using **React** and **Vite**, that integrates Google Generative AI for text generation. The app emulates the chat interface and functionalities of ChatGPT with features such as a conversation history, dynamic message rendering, and more. 
 
-Table of Contents
+---
 
-Features
+## Features
 
-Getting Started
+- **Real-Time Chat**: Send and receive messages with the help of AI. 
+- **Dynamic History**: View and select past conversation queries in the sidebar.
+- **Rich Text Formatting**: AI responses support bold, line breaks, and other styles for better readability.
+- **Responsive Sidebar**: Expandable and collapsible for a clean interface.
+- **Google Generative AI Integration**: Utilizes Google Generative AI (Gemini-1.5-pro-002 model) for responses.
+- **Customizable Design**: Styled with CSS and supports dark mode aesthetics.
+- **Error Handling**: Handles model overloading and API key changes gracefully.
 
-Prerequisites
+---
 
-Installation
+## Demo
 
-Running the Application
+![image](https://github.com/user-attachments/assets/7e3ab18d-f909-4bf8-9b87-91b759e3f1d9)
 
-Project Structure
 
-Technologies Used
+---
 
-License
+## Installation
 
-Features
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/chatgpt-clone.git
+   cd chatgpt-clone
+   ```
 
-Dynamic Chat Interface: Real-time chat with an AI model that supports markdown and emojis.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-Side Panel: View chat history and create new chats.
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-API Key Management: Automatically switches between multiple API keys in case of errors or overload.
+4. Open the app in your browser at `http://localhost:5173`.
 
-Customizable Prompts: Includes preset prompts for quick interaction.
+---
 
-Responsive Design: Optimized for various screen sizes.
+## Configuration
 
-Dark Theme: A visually appealing UI with a dark theme for better readability.
+### Google Generative AI Setup
+1. Obtain an API key from [Google Cloud Console](https://console.cloud.google.com/).
+2. Replace the placeholder keys in the `App.jsx` file with your Google API keys:
+   ```javascript
+   const api = ["YOUR_API_KEY_1", "YOUR_API_KEY_2", ...];
+   ```
+3. Make sure the model ID in `/src/Openai.js` matches your requirements:
+   ```javascript
+   model: "gemini-1.5-pro-002"
+   ```
 
-Getting Started
 
-Prerequisites
 
-Ensure you have the following installed:
+---
 
-Node.js (v16 or later)
+## Project Structure
 
-npm or yarn
-
-A valid API key for Google Generative AI
-
-Installation
-
-Clone the repository:
-
-git clone https://github.com/your-username/chat-gpt-clone.git
-cd chat-gpt-clone
-
-Install dependencies:
-
-npm install
-
-Running the Application
-
-Start the development server:
-
-npm run dev
-
-Open your browser and navigate to http://localhost:5173.
-
-Add your API keys in src/App.jsx under the api array:
-
-const api = [
-  "YOUR_API_KEY_1",
-  "YOUR_API_KEY_2",
-  "YOUR_API_KEY_3"
-];
-
-Begin chatting with the AI!
-
-Project Structure
-
-.
-├── public
+```plaintext
 ├── src
-│   ├── assets         # Images and icons
-│   ├── components     # Reusable components
-│   ├── App.jsx        # Main application logic
-│   ├── Openai.js      # API integration
-│   ├── index.css      # Global styles
-│   ├── main.jsx       # Entry point
-├── .eslintrc.js       # ESLint configuration
-├── vite.config.js     # Vite configuration
-├── package.json       # Project dependencies and scripts
-└── README.md          # Project documentation
+│   ├── assets           # Static assets like images
+│   ├── components       # Reusable components (if added)
+│   ├── App.jsx          # Main application logic
+│   ├── Openai.js        # Google Generative AI integration
+│   ├── main.jsx         # Entry point for React
+│   └── App.css          # Styles
+├── public               # Public assets
+├── README.md            # Documentation
+├── package.json         # Node.js dependencies and scripts
+├── vite.config.js       # Vite configuration
+└── eslint.config.js     # ESLint rules
+```
 
-Technologies Used
+---
 
-Frontend
+## Scripts
 
-React: A JavaScript library for building user interfaces.
+- **Start Development Server**: `npm run dev`
+- **Build for Production**: `npm run build`
+- **Preview Production Build**: `npm run preview`
 
-Vite: A fast build tool for modern web projects.
+---
 
-Backend / API Integration
+## Usage
 
-Google Generative AI: Used for handling AI responses.
+1. Start a new conversation by clicking the **"New Chat"** button in the sidebar.
+2. Type a query in the input field and press **Enter** or click the **Send** button.
+3. View responses with enhanced formatting and continue your conversation.
 
-OpenAI API: Integrated for advanced chat functionalities.
+---
 
-Styling
+## Known Issues
 
-CSS: Responsive and dark-themed design.
+- **Model Overload**: If the Google Generative AI model is overloaded, the app automatically switches to the next API key.
+- **Unimplemented Features**: Some buttons in the sidebar (e.g., Home, Saved) are placeholders for future enhancements.
 
-Poppins Font: Google Fonts for a modern look.
+---
+
+## Contributions
+
+Contributions are welcome! Please fork the repository and submit a pull request with improvements or fixes.
+
+---
+
+## Contact
+
+If you encounter any issues or have questions, feel free to contact:  
+📧 **lokeshvlw2004@gmail.com**
+
+---
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
