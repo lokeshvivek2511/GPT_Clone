@@ -30,7 +30,7 @@ function App() {
       const [error,setError]=useState(false);
       let his=[...history].reverse()
       const [messages,setMessages]=useState([{
-              text:"Hi, I am GPT, a state-of-the-art language model developed by Lokesh",
+              text:"Hi, I am GPT, a state-of-the-art language model",
               isBot:true
             }]);
 
