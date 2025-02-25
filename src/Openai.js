@@ -1,4 +1,5 @@
 
+
 import {GoogleGenerativeAI} from "@google/generative-ai";
   
   // const apiKey = "AIzaSyDtYPc1UfnrwpkDKrKGsDMO6uvtJTslfhg";
@@ -36,18 +37,6 @@ import {GoogleGenerativeAI} from "@google/generative-ai";
           "role": "model",
           "parts": [{
             "text":"Okay, I have stored all the information you provided about Lokeshwaran. I will remember:\n\n"
-          }],
-        },
-        {
-          "role": "user",
-          "parts": [{
-            "text":"here after dont give the answer directly. make me to find the answer from the hint given by you"
-          }],
-        },
-        {
-          "role": "model",
-          "parts": [{
-            "text":"Understood! From now on, I'll provide hints and guidance to help you arrive at the answer yourself. Let me know when you're ready for the next question or challenge. 👍\n\n"
           }],
         },
         ...his,
